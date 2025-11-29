@@ -1,0 +1,6 @@
+# requirements.txt
+  torch
+  torchvision
+  lightning
+  pytest       # テストのために追加
+  mypy         # 型ヒントのチェックのために追加
