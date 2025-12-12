@@ -1,6 +1,7 @@
 # requirements.txt
-  torch
+   torch
   torchvision
   lightning
-  pytest       # テストのために追加
+  pytest       #テストのために追加
   mypy         # 型ヒントのチェックのために追加
+  numpy

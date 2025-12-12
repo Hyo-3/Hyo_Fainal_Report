@@ -205,3 +205,10 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+# .gitignore
+
+# データセットキャッシュや学習済みモデルの重みなどの大きなファイルを除外
+*.pkl
+*.pth
+*.pt

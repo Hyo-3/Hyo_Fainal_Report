@@ -8,6 +8,7 @@ import gzip
 import pickle
 import os
 import numpy as np
+from typing import Dict, Tuple
 
 
 #url_base = 'http://yann.lecun.com/exdb/mnist/'
@@ -29,7 +30,7 @@ img_dim = (1, 28, 28)
 img_size = 784
 
 
-def _download(file_name):
+def _download(file_name: str) -> None:
     file_path = dataset_dir + "/" + file_name
 
     if os.path.exists(file_path):
@@ -47,9 +48,9 @@ def download_mnist():
     for v in key_file.values():
        _download(v)
 
-def _load_label(file_name):
+def _load_label(file_name: str) -> np.ndarray:
     file_path = dataset_dir + "/" + file_name
-
+    
     print("Converting " + file_name + " to NumPy Array ...")
     with gzip.open(file_path, 'rb') as f:
             labels = np.frombuffer(f.read(), np.uint8, offset=8)
@@ -68,7 +69,7 @@ def _load_img(file_name):
 
     return data
 
-def _convert_numpy():
+def _convert_numpy() -> Dict[str, np.ndarray]:
     dataset = {}
     dataset['train_img'] =  _load_img(key_file['train_img'])
     dataset['train_label'] = _load_label(key_file['train_label'])
@@ -93,7 +94,7 @@ def _change_one_hot_label(X):
     return T
 
 
-def load_mnist(normalize=True, flatten=True, one_hot_label=False):
+def load_mnist(normalize: bool =True, flatten: bool =True, one_hot_label: bool=False) -> Tuple[Tuple[np.ndarray, np.ndarray],Tuple[np.ndarray, np.ndarray]]:
     """MNISTデータセットの読み込み
 
     Parameters
