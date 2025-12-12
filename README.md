@@ -14,7 +14,7 @@
    上記URLからmnist.pyをダウンロード
 
 #　requirements.txtというディレクトリを作成
-  requirements.txt内に以下の5項目を記述
+  #　 requirements.txt内に以下の5項目を記述
    torch
    torchvision
    lightning
@@ -32,25 +32,26 @@
 #　修正内容：mnist.py内のデータ処理関数に対し、numpy.ndarray、str、boolなどの型ヒントを厳密に追加した。これにより、関数のインターフェイスが明確化され、静的解析ツールによるチェックが可能になった。
 
 #　以下修正点
-11行目に追加　from typing import Dict, Tuple
+#　11行目に追加　from typing import Dict, Tuple
 
 32行目
-修正前　def _download(file_name):	
-修正後　def _download(file_name: str) -> None:
+#　修正前　def _download(file_name):	
+#　修正後　def _download(file_name: str) -> None:
 
 50行目
-修正前　def _load_label(file_name):
-修正後　def _load_label(file_name: str) -> np.ndarray:
+#　修正前　def _load_label(file_name):
+#　修正後　def _load_label(file_name: str) -> np.ndarray:
 
 71行目
-修正前　def _convert_numpy():
-修正後　def _convert_numpy() -> Dict[str, np.ndarray]:
+#　修正前　def _convert_numpy():
+#　修正後　def _convert_numpy() -> Dict[str, np.ndarray]:
 
 96行目
-修正前　def load_mnist(normalize=True, flatten=True, one_hot_label=False):
-修正後　def load_mnist(normalize: bool =True, flatten: bool =True, one_hot_label: bool=False) -> Tuple[Tuple[np.ndarray, np.ndarray],Tuple[np.ndarray, np.ndarray]]:
+#　修正前　def load_mnist(normalize=True, flatten=True, one_hot_label=False):
+#　修正後　def load_mnist(normalize: bool =True, flatten: bool =True, one_hot_label: bool=False) -> Tuple[Tuple[np.ndarray, np.ndarray],Tuple[np.ndarray, np.ndarray]]:
 
 #　pytestによるテストの導入
+
 #　tests/test_data_loader.pyというディレクトリを作成
 テストの内容はデータロードと正規化およびワンホットエンコーディングのオプションを正しく処理するかどうかを見る
 
