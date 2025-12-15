@@ -19,7 +19,7 @@
 
 #　requirements.txtというディレクトリを作成
   
-  #　 requirements.txt内に以下の5項目を記述
+  #　 requirements.txt内に以下の6項目を記述
    
    torch
    
